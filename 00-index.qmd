@@ -1,0 +1,35 @@
+---
+title: "BISemWeb2025"
+---
+
+# Spatial Data Analysis in R/RStudio {.unnumbered}
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('images/general/Welcome_image.png') 
+```
+
+Welcome to the 2-day practical session. Part of this workshop is to deliver an interactive training session on **Introductory Spatial Data Analysis in RStudio** for basic mapping for any particular indicators in **Cote D'Ivoire**. We will be using mosquito dataset from the World Health Organisation (WHO) to build intuition on programming & data handling as aspect in RStudio. 
+
+This training session has been designed **purely** as an introduction to show the core programming tenets for basic spatial analysis in RStudio. This online resource are **free of charge**, and thus has been designed as reference to this session and will remain available indefinitely to participants.
+
+## Structure {.unnumbered}
+
+All lectures and computer practicals will be delivered hybrid. The table below contains the lessons and learning materials: 
+
+| **Day**        | **Session**                   | **Topics**                                   |
+|:----------------|:-----------------------------|:---------------------------------------------|
+| 17/12/2025      | Lecture                      | Intro. Spatial Data Analysis [**[Slides]**]()|
+| 18/12/2025      | Practical I                  | Basic mapping using `tmap` **[Data]**        |
+| 19/12/2025      | Practical II                 | Risk Mapping and Cluster Detection.          |
+
+::: note
+**IMPORTANT NOTE**: If you can, please bring your own laptops with you to participate in these remote sessions. These will be recorded accordingly and the associated video will be made available via this website.
+:::
+
+## Contact Details of Instructors {.unnumbered}
+
+Beyond the course, please feel free to contact me via email for help, or if you would like a Zoom meeting for additional support if need be. My contact information is:
+
+| **Name**              | **Email**                                  |
+|-----------------------|--------------------------------------------|
+| **Dr. Anwar Musah**   | [**a.musah\@ucl.ac.uk**](a.musah@ucl.ac.uk)|

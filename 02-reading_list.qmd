@@ -1,0 +1,9 @@
+---
+title: "Reading Materials"
+---
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('images/general/Recommended_books.png')
+```
+
+These are excellent books for studying spatial data analysis more broadly to gain mastery of the theory and coding execution. You can access their PDF versions [**HERE**](https://drive.google.com/drive/folders/14IfboqBZu4TSfN9ZPefXHD3SivkD6m_m?usp=sharing). 

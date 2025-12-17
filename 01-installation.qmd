@@ -1,0 +1,42 @@
+---
+title: "Installation"
+---
+
+# Introduction
+
+R (or RStudio) is a statistical programming package that allows users to carry out a wide range of statistical analyses. It can also function as GIS software, enabling various types of analysis on geographical data. In the same way, it can be used for data management and geoprocessing—for example, importing different types of data, whether non-spatial or spatial, and preparing them for analysis.
+
+There are two versions:
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('images/general/R_versiontypes.png', error = FALSE) 
+```
+
+The famous icon on the left is the version for [**R (Base)**](https://www.r-project.org), and the one on the right is the version for [**RStudio**](https://www.rstudio.com). Both software packages are the same. The only difference is that RStudio is attractive, intuitive, and more importantly, it is user-friendly than Base R. So, we will be using this version (i.e., RStudio) throughout this workshop. 
+
+Let us talk about the installation of RStudio on your personal computer.
+
+## Download and Installation of Software {.unnumbered}
+
+RStudio is an open-source software, it is free. It is widely recommended in data science, scientific research, and technical communication because it is easy to access, download, and install. To use RStudio, you must first install R (Base) before installing RStudio as it serves as an engine to RStudio. Follow the steps below to install both programs for your operating system (Windows or Mac).
+
+**Steps**
+
+1. Download the R (Base) installer from the table below, then run the file to complete the installation. If you are a Windows user, you must download **Rtools** before proceeding to step 2.
+2. Next, download the RStudio installer from the table below, then run the file to complete the installation. 
+
+**OS User type**  | **Downloadable Software Packages**        |
+------------------| ------------------------------------------|
+Windows 10/11     | [1] [**R (4.5.2)**](https://cran.ma.imperial.ac.uk/bin/windows/base/R-4.5.2-win.exe); [2] [**RTools (4.5)**](https://cran.ma.imperial.ac.uk/bin/windows/Rtools/rtools45/files/rtools45-6691-6492.exe); [3] [**RStudio (2025.09.2-418)**](https://download1.rstudio.org/electron/windows/RStudio-2025.09.2-418.exe)|
+MacOS 13+ (Intel) | [1] [**R (4.5.2)**](https://cran.ma.imperial.ac.uk/bin/macosx/big-sur-x86_64/base/R-4.5.2-x86_64.pkg); [2] [**RStudio (2025.09.2-418)**](https://download1.rstudio.org/electron/macos/RStudio-2025.09.2-418.dmg); |
+MacOS 13+ (M1/M2/M3/M4) | [1] [**R (4.5.2)**](https://cran.ma.imperial.ac.uk/bin/macosx/big-sur-arm64/base/R-4.5.2-arm64.pkg); [2] [**RStudio (2025.09.2-418)**](https://download1.rstudio.org/electron/macos/RStudio-2025.09.2-418.dmg)|
+
+:::{.callout-important}
+**R (Base)** is very particular about the operating system! Please be sure to use the correct installer for your computer:
+
+- **Windows** users: use the files in the first row.
+- **Mac (Intel)** users: use the files in the second row.
+- **Mac (M1, M2, or M3 chip)** users: use the files in the third row.
+:::
+
+This section covers how to download and install RStudio for it to be used locally on your machine. Now, you are ready to participate in tomorrows computer practical session.

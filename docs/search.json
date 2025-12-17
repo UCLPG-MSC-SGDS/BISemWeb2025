@@ -1,0 +1,68 @@
+[
+  {
+    "objectID": "02-reading_list.html",
+    "href": "02-reading_list.html",
+    "title": "Reading Materials",
+    "section": "",
+    "text": "These are excellent books for studying spatial data analysis more broadly to gain mastery of the theory and coding execution. You can access their PDF versions HERE.",
+    "crumbs": [
+      "Getting Started",
+      "Reading Materials"
+    ]
+  },
+  {
+    "objectID": "01-installation.html",
+    "href": "01-installation.html",
+    "title": "Installation",
+    "section": "",
+    "text": "R (or RStudio) is a statistical programming package that allows users to carry out a wide range of statistical analyses. It can also function as GIS software, enabling various types of analysis on geographical data. In the same way, it can be used for data management and geoprocessing—for example, importing different types of data, whether non-spatial or spatial, and preparing them for analysis.\nThere are two versions:\n\n\n\n\n\n\n\n\n\nThe famous icon on the left is the version for R (Base), and the one on the right is the version for RStudio. Both software packages are the same. The only difference is that RStudio is attractive, intuitive, and more importantly, it is user-friendly than Base R. So, we will be using this version (i.e., RStudio) throughout this workshop.\nLet us talk about the installation of RStudio on your personal computer.\n\n\nRStudio is an open-source software, it is free. It is widely recommended in data science, scientific research, and technical communication because it is easy to access, download, and install. To use RStudio, you must first install R (Base) before installing RStudio as it serves as an engine to RStudio. Follow the steps below to install both programs for your operating system (Windows or Mac).\nSteps\n\nDownload the R (Base) installer from the table below, then run the file to complete the installation. If you are a Windows user, you must download Rtools before proceeding to step 2.\nNext, download the RStudio installer from the table below, then run the file to complete the installation.\n\n\n\n\nOS User type\nDownloadable Software Packages\n\n\n\n\nWindows 10/11\n[1] R (4.5.2); [2] RTools (4.5); [3] RStudio (2025.09.2-418)\n\n\nMacOS 13+ (Intel)\n[1] R (4.5.2); [2] RStudio (2025.09.2-418);\n\n\nMacOS 13+ (M1/M2/M3/M4)\n[1] R (4.5.2); [2] RStudio (2025.09.2-418)\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nR (Base) is very particular about the operating system! Please be sure to use the correct installer for your computer:\n\nWindows users: use the files in the first row.\nMac (Intel) users: use the files in the second row.\nMac (M1, M2, or M3 chip) users: use the files in the third row.\n\n\n\nThis section covers how to download and install RStudio for it to be used locally on your machine. Now, you are ready to participate in tomorrows computer practical session.",
+    "crumbs": [
+      "Getting Started",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "01-installation.html#download-and-installation-of-software",
+    "href": "01-installation.html#download-and-installation-of-software",
+    "title": "Installation",
+    "section": "",
+    "text": "RStudio is an open-source software, it is free. It is widely recommended in data science, scientific research, and technical communication because it is easy to access, download, and install. To use RStudio, you must first install R (Base) before installing RStudio as it serves as an engine to RStudio. Follow the steps below to install both programs for your operating system (Windows or Mac).\nSteps\n\nDownload the R (Base) installer from the table below, then run the file to complete the installation. If you are a Windows user, you must download Rtools before proceeding to step 2.\nNext, download the RStudio installer from the table below, then run the file to complete the installation.\n\n\n\n\nOS User type\nDownloadable Software Packages\n\n\n\n\nWindows 10/11\n[1] R (4.5.2); [2] RTools (4.5); [3] RStudio (2025.09.2-418)\n\n\nMacOS 13+ (Intel)\n[1] R (4.5.2); [2] RStudio (2025.09.2-418);\n\n\nMacOS 13+ (M1/M2/M3/M4)\n[1] R (4.5.2); [2] RStudio (2025.09.2-418)\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nR (Base) is very particular about the operating system! Please be sure to use the correct installer for your computer:\n\nWindows users: use the files in the first row.\nMac (Intel) users: use the files in the second row.\nMac (M1, M2, or M3 chip) users: use the files in the third row.\n\n\n\nThis section covers how to download and install RStudio for it to be used locally on your machine. Now, you are ready to participate in tomorrows computer practical session.",
+    "crumbs": [
+      "Getting Started",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "00-index.html",
+    "href": "00-index.html",
+    "title": "BISemWeb2025",
+    "section": "",
+    "text": "Welcome to the 2-day practical session. Part of this workshop is to deliver an interactive training session on Introductory Spatial Data Analysis in RStudio for basic mapping for any particular indicators in Cote D’Ivoire. We will be using mosquito dataset from the World Health Organisation (WHO) to build intuition on programming & data handling as aspect in RStudio.\nThis training session has been designed purely as an introduction to show the core programming tenets for basic spatial analysis in RStudio. This online resource are free of charge, and thus has been designed as reference to this session and will remain available indefinitely to participants.\n\n\nAll lectures and computer practicals will be delivered hybrid. The table below contains the lessons and learning materials:\n\n\n\nDay\nSession\nTopics\n\n\n\n\n17/12/2025\nLecture\nIntro. Spatial Data Analysis [Slides]\n\n\n18/12/2025\nPractical I\nBasic mapping using tmap [Data]\n\n\n19/12/2025\nPractical II\nRisk Mapping and Cluster Detection.\n\n\n\n\nIMPORTANT NOTE: If you can, please bring your own laptops with you to participate in these remote sessions. These will be recorded accordingly and the associated video will be made available via this website.\n\n\n\n\nBeyond the course, please feel free to contact me via email for help, or if you would like a Zoom meeting for additional support if need be. My contact information is:\n\n\n\nName\nEmail\n\n\n\n\nDr. Anwar Musah\na.musah@ucl.ac.uk",
+    "crumbs": [
+      "Overview",
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "00-index.html#structure",
+    "href": "00-index.html#structure",
+    "title": "BISemWeb2025",
+    "section": "",
+    "text": "All lectures and computer practicals will be delivered hybrid. The table below contains the lessons and learning materials:\n\n\n\nDay\nSession\nTopics\n\n\n\n\n17/12/2025\nLecture\nIntro. Spatial Data Analysis [Slides]\n\n\n18/12/2025\nPractical I\nBasic mapping using tmap [Data]\n\n\n19/12/2025\nPractical II\nRisk Mapping and Cluster Detection.\n\n\n\n\nIMPORTANT NOTE: If you can, please bring your own laptops with you to participate in these remote sessions. These will be recorded accordingly and the associated video will be made available via this website.",
+    "crumbs": [
+      "Overview",
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "00-index.html#contact-details-of-instructors",
+    "href": "00-index.html#contact-details-of-instructors",
+    "title": "BISemWeb2025",
+    "section": "",
+    "text": "Beyond the course, please feel free to contact me via email for help, or if you would like a Zoom meeting for additional support if need be. My contact information is:\n\n\n\nName\nEmail\n\n\n\n\nDr. Anwar Musah\na.musah@ucl.ac.uk",
+    "crumbs": [
+      "Overview",
+      "Welcome"
+    ]
+  }
+]
