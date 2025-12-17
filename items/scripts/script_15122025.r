@@ -7,8 +7,7 @@
 #
 # Dependencies:
 # 	[1] tmap
-# 	[2] malariaAtlas
-# 	[3] sf
+# 	[2] sf
 #
 # Author: Dr. Anwar Musah
 # Date: 2025-12-15
@@ -17,8 +16,4 @@
 # Load libraries
 library("sf")
 library("tmap")
-library("malariaAtlas")
 
-# Get the prevalence data for Cote Ivoire
-CIV_malaria_pr_data <- getPR(country = "Côte d'Ivoire", ISO = "CIV" , species = "both")
-autoplot(CIV_malaria_pr_data)

@@ -18,7 +18,7 @@ All lectures and computer practicals will be delivered hybrid. The table below c
 
 | **Day**        | **Session**                   | **Topics**                                   |
 |:----------------|:-----------------------------|:---------------------------------------------|
-| 17/12/2025      | Lecture                      | Intro. Spatial Data Analysis [**[Slides]**]()|
+| 17/12/2025      | Lecture                      | Intro. Spatial Data Analysis [**[Slides]**](https://tinyurl.com/y5dw2d9x)|
 | 18/12/2025      | Practical I                  | Basic mapping using `tmap` **[Data]**        |
 | 19/12/2025      | Practical II                 | Risk Mapping and Cluster Detection.          |
 
