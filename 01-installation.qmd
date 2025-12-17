@@ -36,7 +36,7 @@ MacOS 13+ (M1/M2/M3/M4) | [1] [**R (4.5.2)**](https://cran.ma.imperial.ac.uk/bin
 
 - **Windows** users: use the files in the first row.
 - **Mac (Intel)** users: use the files in the second row.
-- **Mac (M1, M2, or M3 chip)** users: use the files in the third row.
+- **Mac (M1, M2, M3 or M4 chip)** users: use the files in the third row.
 :::
 
 This section covers how to download and install RStudio for it to be used locally on your machine. Now, you are ready to participate in tomorrows computer practical session.
