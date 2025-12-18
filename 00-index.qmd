@@ -8,27 +8,29 @@ title: "BISemWeb2025"
 knitr::include_graphics('images/general/Welcome_image.png') 
 ```
 
-Welcome to the 2-day practical session. Part of this workshop is to deliver an interactive training session on **Introductory Spatial Data Analysis in RStudio** for basic mapping for any particular indicators in **Cote D'Ivoire**. We will be using mosquito dataset from the World Health Organisation (WHO) to build intuition on programming & data handling as aspect in RStudio. 
+Welcome to the 2-day practical session hosted at [**BISemWeb 2025 @ ENSEA (Abidjan, Cote d'Ivoire)**](https://sites.google.com/view/bisemweb25/home). Part of this computer practical session is to deliver an interactive training session on **Introductory Spatial Data Analysis in RStudio** for basic mapping for any particular indicators in **Cote d'Ivoire**. We will be using mosquito insecticide treatment dataset from the World Health Organisation (WHO) to build intuition on the programming & data handling aspects in RStudio. 
 
-This training session has been designed **purely** as an introduction to show the core programming tenets for basic spatial analysis in RStudio. This online resource are **free of charge**, and thus has been designed as reference to this session and will remain available indefinitely to participants.
+This training session has been designed **purely** as an introduction to show the core programming tenets for basic spatial analysis in RStudio. This online resource is **free of charge**, and thus has been designed as reference to this session and will remain available indefinitely to participants.
 
 ## Structure {.unnumbered}
 
 All lectures and computer practicals will be delivered hybrid. The table below contains the lessons and learning materials: 
 
-| **Day**        | **Session**                   | **Topics**                                   |
-|:----------------|:-----------------------------|:---------------------------------------------|
-| 17/12/2025      | Lecture                      | Intro. Spatial Data Analysis [**[Slides]**](https://tinyurl.com/y5dw2d9x)|
-| 18/12/2025      | Practical I                  | Basic mapping using `tmap` **[Data]**        |
-| 19/12/2025      | Practical II                 | Risk Mapping and Cluster Detection.          |
+| **Day**        | **Session**                   | **Topics**                                                               |
+|:----------------|:-----------------------------|:-------------------------------------------------------------------------|
+| 17/12/2025      | Lecture                      | Intro. Spatial Data Analysis [**[Slides]**](https://tinyurl.com/yuwz3tj5)|
+| 18/12/2025      | Practical I                  | Basic mapping using `tmap` [**[Dataset]**](https://tinyurl.com/4t4dn43k) |
+| 19/12/2025      | Practical II                 | Moran's I & LISA mapping for Cluster Detection                           |
 
 ::: note
-**IMPORTANT NOTE**: If you can, please bring your own laptops with you to participate in these remote sessions. These will be recorded accordingly and the associated video will be made available via this website.
+**IMPORTANT NOTE**: If you can, please bring your own laptops with you to participate in these remote sessions. These will be recorded accordingly and the associated video will be made available.
 :::
 
-## Contact Details of Instructors {.unnumbered}
+## Contact Details of Instructor {.unnumbered}
 
-Beyond the course, please feel free to contact me via email for help, or if you would like a Zoom meeting for additional support if need be. My contact information is:
+Beyond the course, please feel free to contact me via email for help, or if you would like a Zoom meeting for additional support if need be. 
+
+My contact information is:
 
 | **Name**              | **Email**                                  |
 |-----------------------|--------------------------------------------|

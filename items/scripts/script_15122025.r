@@ -147,3 +147,6 @@ write.csv(CIV_Agg_Insect_ADMIN3, file = "CIV_Sub_Prefecture_Mosquito_Data.csv", 
 CIV_ADMIN3 <- CIV_ADMIN3[,-2]
 write_sf(CIV_ADMIN3, "CIV_Sub_Prefectures.shp")
 write_sf(CIV_ADMIN1, "CIV_District.shp")
+
+# https://github.com/UCLPG-MSC-SGDS/BISemWeb2025/raw/main/items/attach_to_gitpage/BISem2025%20Lecture%20Notes%20-%20Introduction.pdf
+# https://github.com/UCLPG-MSC-SGDS/BISemWeb2025/raw/main/items/attach_to_gitpage/Dataset.zip
