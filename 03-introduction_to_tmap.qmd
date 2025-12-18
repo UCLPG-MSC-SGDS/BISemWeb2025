@@ -1,5 +1,5 @@
 ---
-title: "Day 1: Introduction to Mapping in R/RStudio"
+title: "Day 1: Basic Mapping in R/RStudio"
 ---
 
 ## Introduction
@@ -268,7 +268,7 @@ Therefore, the path location to this folder on a **Windows** machine would be wr
 3. Now, click on the bar at the top which shows `BISemWeb2025 > Day 1`. This should highlight and show `"C:\Users\accountName\Desktop\BISemWeb2025\Day 1"` (see image below):
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
-knitr::include_graphics('images/day1/image3_path_window.png', error = FALSE) 
+knitr::include_graphics('images/day1/image_pathlocation_windows.png', error = FALSE) 
 ```
 
 4. Now, copy `"C:\Users\accountName\Desktop\BISemWeb2025\Day 1"` and paste the path name into the `setwd()` function in your R script.
@@ -287,7 +287,7 @@ For **MAC** users, its marginally different. The path location would be written 
 2. Hold the "Option" `⌥` key down
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
-knitr::include_graphics('images/day1/image4_path_mac.png', error = FALSE) 
+knitr::include_graphics('images/day1/image_pathlocation_mac.png', error = FALSE) 
 ```
 
 3. Click `Copy "filename" as Pathname`
@@ -302,131 +302,45 @@ setwd("/Users/accountName/Desktop/BISemWeb2025/Day 1")
 
 This should set the working directory. Now, let us learn how to import a CSV data into RStudio. 
 
-### How do we import, merge and export CSV data with RStudio?
+### How do we import a CSV data in RStudio?
 
-#### Importing data using `read.csv()`
+As you will be working mostly with comma separated value formatted data (i.e., csv) we will therefore learn how to import and export in RStudio. There are three files (1 CSV, 2 shapefiles) that we are going to import into RStudio:
 
-As you will be working mostly with comma separated value formatted data (i.e., csv) we will therefore learn how to import and export in RStudio. There are two files that we are going to import into RStudio from Week 1’s folder:
+1. `CIV_Sub_Prefecture_Mosquito_Data.csv` which contains four columns about mosquito (i.e., Anopheles Gambiae) populations after insecticide campaign in Cote d'Ivoire across 113 sub-prefectures - `NAME_3` (the name of sub-prefecture); `TOTAL_MOSQ` (total number of mosquitoes), `TOTAL_MOSQ_DEATH` (total number of mosquitoes that died after exposure to the insecticide), `TOTAL_MOSQ_SURV` (total number of mosquitoes that survived after exposure to the insecticide) and `MORTALITY_ADJ_AVR` (mortality adjusted rate).
 
-1. `London_LSOA_Deprivation_2019.csv` which contains information on seven indicators (as scores) and an IMD ranking for socioeconomic deprivation for 4,836 postcodes across London in 2019.
-2. `London_LSOA_FireHazards_2019.csv` which contains details about the observed and estimated expected number of fire-related accidents to have occurred in residential premises with the overall number of houses in 4,836 postcodes across London in 2019. 
+2. `CIV_District.shp` which is a vector layer containing the spatial boundaries of the 14 districts in Cote d'Ivoire.
 
-To import a csv into RStudio, we use the `read.csv()` function. To demonstrate this, let us import the data for fires into an data frame object and name it as `Fire_data`
+3. `CIV_Sub_Prefectures.shp` which is a vector layer containing the spatial boundaries of the 113 sub-prefectures in Cote d'Ivoire.
+
+To import a csv into RStudio, we use the `read.csv()` function. To demonstrate this, let us import the data for fires into an data frame object and name it as `CIV_Agg_Insect_ADMIN3`
 
 ```{r, eval=FALSE}
 # Import data using read.csv() function 
-Fire_data <- read.csv(file="London_LSOA_FireHazards_2019.csv", header = TRUE, sep = ",")
+CIV_Agg_Insect_ADMIN3 <- read.csv(file = "CIV_Sub_Prefecture_Mosquito_Data.csv", header = TRUE, sep = ",")
 ```
-
-Just in case...suppose if we did **NOT** set the working directory earlier. We would have to go through the hassle of typing the path location in the `read.csv()`.
-
-For windows:
-
-```{r, eval=FALSE}
-Fire_data <- read.csv(file="C:/Users/accountName/Desktop/GEOG0114/Week 1/London_LSOA_FireHazards_2019.csv", header = TRUE, sep = ",")
-```
-
-For Mac:
-
-```{r, eval=FALSE}
-Fire_data <- read.csv(file="/Users/accountName/Desktop/GEOG0114/Week 1/London_LSOA_FireHazards_2019.csv", header = TRUE, sep = ",")
-```
-
-I do not recommend doing it this way. Just set the work directory with `setwd()` to make life easier for yourself.
 
 :::{.callout-important}
 The arguments used in `read.csv()` function – 1.) '`file =`' is a mandatory option where you quote the name of the file to be imported; 2.) '`header = TRUE`' option is set to `TRUE` which is telling RStudio that the file that is about to be imported has column names on the first row so it should not treat as observations; and 3.) '`sep = ","` ' we are telling RStudio that the format of the dataset is comma separated.
 :::
 
-We have imported the fire hazards data. Now, let us import the second data for deprivation using the `read.csv()` function and call it `Deprivation_data`. The code would look something as follows:
+We have imported the mosquito data. You can actually view the spreadsheet in the data viewer window using the code `View()`:
 
 ```{r, eval=FALSE}
-# Import data using read.csv() function 
-Deprivation_data <- read.csv(file="London_LSOA_Deprivation_2019.csv", header = TRUE, sep = ",")
-
-# Show viewer the data sets
-View(Deprivation_data)
-View(Fire_data)
+# Show viewer the data set
+View(CIV_Agg_Insect_ADMIN3)
 ```
 
-#### Joining two datasets by merger using the `merge()` function
+### How do we import a shapefile into RStudio?
 
-You will often find yourself merging two or more data frames together, especially bringing together a spatial object with a non-spatial object. We cannot stress the importance of merging objects in the correct order so that the spatial attributes are preserved. 
+#### Installing packages into RStudio
 
-In this instance, we are just dealing with two ordinary dataset which are non-spatial - i.e., one data set contains information on Fires that occurred in geographic units in London know as Lower Super Output Areas (LSOA), while the other contains its corresponding information for socioeconomic indicators that describe the LSOA. Hence, it is possible to merge the two data frames uniquely using a common key variable like `LSOA_code`. 
-
-```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
-knitr::include_graphics('images/general/week1/image5_dataviewer.png', error = FALSE) 
-```
-
-This task can be done using the merge function `merge()`. Consequently, we want the format of the merge code to look something akin to this syntax `merge(target_object, selected_object, by=”LSOA”)`.
-
-Merging data frames is indeed a very important technique to know especially if you need to bring together event information with no spatial dimension with actual spatial data. Alright, let’s merge the deprivation data on the fire records using the `LSOA_code` column, and generate a bigger data frame that contains both the fire and socioeconomic information:
-
-```{r, eval=FALSE}
-# Using the merge() function 
-Full_data <- merge(Fire_data, Deprivation_data, by.x = “LSOA_code”, by.y = “LSOA_code”, all.x = TRUE)
-
-# View the datasets
-View(Full_data)
-```
-
-:::{.callout-important}
-The arguments used in `merge.csv()`: 
-
-1. `Fire_data` is the target data frame we want something to be merged on to. 
-2. `Deprivation_data` is the selected data frame we are using to merge with the `Fire_data`. 
-3. `by.x = "LSOA_code"` option we are specifying the name of the join column from the target data frame i.e., `Fire_data`.
-4. `by.y = "LSOA_code"` option we are specifying the name of the join column from the selected data frame i.e., `Deprivation_data`
-5. `all.x=TRUE` option we are telling RStudio to retain all rows that are originally from the target data after merging regardless of whether or not they are present in the selected data frame. So even if a row from the selected data does not find a unique link with any of the rows in target data to match too - it will still preserve the target data frame by not discarding unlinked rows. But it will discard the unmatched rows from the selected data frame.
-:::
-
-#### Saving your dataset using the `write.csv()` function
-
-Let us save a version of this as a `.csv` file as a saved product named `“London_Fire_and_Deprivation_2019.csv”`. This can be done by using the `write.csv()` function. It will export the data frame object into a `.csv` format.
-
-```{r, eval=FALSE}
-# Export ‘Full_data’ object as .csv into 'Week 1' folder
-write.csv(Full_data, file = "London_Fire_and_Deprivation_2019.csv", row.names = FALSE)
-```
-
-:::{.callout-important}
-The arguments used in `merge.csv()`: 
-
-1. `Full_data` is an object we are exporting. It is compulsory to specify the object data frame we want to export
-2. `file =` is a mandatory argument. We must give a name to the file we wish to export it as with `.csv` extension.
-3. `row.names =` this is an annoying argument! It will automatically index the dataset with unique row numbers by default if we do not specify `FALSE`! Since the data has its own unique identifiers (i.e., LSOA_code) we specify 'FALSE' to not perform this action of indexing
-:::
-
-Again, suppose if you did **NOT** set the work directory to your folder, you will have to type the whole path location to where you want the data to be exported which could be a hassle:
-
-For Windows:
-
-```{r, eval=FALSE}
-write.csv(Full_data, file = "C:/Users/accountName/Desktop/GEOG0114/Week 1/London_Fire_and_Deprivation_2019.csv", row.names = FALSE)
-```
-
-For Mac:
-
-```{r, eval=FALSE}
-write.csv(Full_data, file = "/Users/accountName/Desktop/GEOG0114/Week 1/London_Fire_and_Deprivation_2019.csv", row.names = FALSE)
-```
-
-Again, I do not recommend doing it this way. Just set the work directory with `setwd()` to make life easier for yourself and to avoid R calling you out for errors.
-
-Now that we have learned a lot of the basic things in RStudio – the stuff shown in **section 1.3** will be used quite a lot in future tutorials. Let us progress to the **section 1.4** where will start using RStudio as a GIS software. Here, we will create our first map to display the spatial distribution of socioeconomic deprivation using the `Full_data` data frame object.
-
-## Basic visualisation of spatial data in RStudio
-
-### Installing packages into RStudio
-
-So far, we have been using functions and commands that are by default built-in RStudio. As you will become more and more proficient in RStudio, you will come to realise that there are several functions in RStudio that are in fact not built-in by default which will require external installation. 
+So far, we have been using functions and commands that are by default native or built-in RStudio. As you will become more and more proficient in RStudio, you will come to realise that there are several functions in RStudio that are in fact not built-in by default which will require external installation. 
 
 For instance, the **`sf`** package which is called **Simply Features** allows the user to load shapefiles (a type of Vector spatial data) into RStudio’s memory. Another important package is called **tmap**, this package gives access to various functions that allows the user to write code and emulate RStudio as a GIS software. These are examples of packages with enables mapping of spatial data. They need to be installed as they not built-in programs in RStudio.
 
-Let us install following packages: `tmap` and `sf` using the `install.packages()` function, and then activate the packages to make them active using the `library()` function. 
+Let us install following packages: `tmap` and `sf` using the `install.packages()` function, and then initiate the packages to make them active in RStudio using the `library()` function. 
 
-First install `remotes`, `tmap` and `sf` packages.:
+First `sf` and `tmap` packages:
 
 ```{r, eval=FALSE}
 install.packages("sf")
@@ -441,38 +355,69 @@ library("sf")
 library("tmap")
 ```
 
-### Adding shapefiles in RStudio
+#### Using the `read_sf()` to import shapefiles in RStudio
 
 The `sf` package grants the user access to a function called `read_sf()` to read-in shapefiles into RStudio. A shapefile typically contains the geometry of the spatial features e.g., points, line segment and boundaries of an areal feature etc. The shapefile has the extension of .shp (and it is **always** accompanied by its other supporting files with extensions `.shx`, `.prj`, `.dbf` and `.cpg`).
 
 :::{.callout-warning}
-Following files must **all** be stored in the same folder location with `.shp` file (i.e., `.shx`, `.prj`, `.dbf` and `.cpg`). If one is missing - the `.shp` file will not work! 
+The following files must **all** be stored in the same folder location with the `.shp` file (i.e., `.shx`, `.prj`, `.dbf` and `.cpg`). If one is missing - the `.shp` file will not work! 
 :::
 
-We have two types of shapefiles:
+Recall, we have two shapefiles:
 
-1. `London_LSOA_Areas.shp` which contains the spatial boundaries of all LSOA postcodes in London.
-2. `London_Borough_Shapefile.shp` which contains the spatial boundaries for all 33 Boroughs in London. 
+1. `CIV_District.shp` for the districts
+2. `CIV_Sub_Prefectures.shp` for the sub-prefectures. 
 
 We can easily load them in RStudio as **Spatial Polygon** objects, type into your script:
 
 ```{r, eval=FALSE}
-# Add shapefiles for LSOA and Boroughs
-london_lsoa_shapefile <- read_sf("London_LSOA_areas.shp")
-london_borough_shapefile <- read_sf("London_Boroughs_Shapefile.shp")
+# Add shapefiles
+CIV_ADMIN1 <- read_sf("CIV_District.shp")
+CIV_ADMIN3 <- read_sf("CIV_Sub_Prefectures.shp")
 ```
 
-We interested in visualising the data at an LSOA-level. We would need to merge the non-spatial (aka ordinary) data i.e., Full_data, uniquely in to the Spatial Polygon object we loaded in previously i.e.,  `london_lsoa_shapefile`, using the `LSOA_code` column.
+#### Joining two datasets by merger using the `merge()` function
 
-Again, we can use the `merge()` function to perform this task the same way we carried out the joining of the two ordinary data frames in **section 1.3.4.2**. Consequently, we want the format of the merge code to look something akin to this syntax `merge(target_spatial_object, selected_non_spatial_object, by="LSOA")`.
+You will often find yourself merging two or more data frames together, especially bringing together a spatial object with a non-spatial object. We cannot stress the importance of merging objects in the correct order so that the spatial attributes are preserved. 
+
+In this instance, we are just dealing with non-spatial dataset - i.e., the object `CIV_Agg_Insect_ADMIN3` because while it contain the prefecture names it does not contain the **geometry** of those areas. 
+
+However, the object `CIV_ADMIN3` is a spatial dataset - as it contains the geometries that define the polygons of sub-prefecture areas (see image).
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('images/day1/image_geometries.png', error = FALSE) 
+```
+
+You can also check this by using the `View()` function on `CIV_ADMIN3`:
+
+```{r eval=FALSE}
+View(CIV_ADMIN3)
+```
+
+We need merge these two objects `CIV_ADMIN3` & `CIV_Agg_Insect_ADMIN3`using the `merge()` function. Consequently, we want the format of the merge code to look something akin to this syntax `merge(target_object, selected_object, by="NAME_OF_LINK_COLUMN")`.
+
+Merging data frames is indeed a very important technique to know especially if you need to bring together event information with no spatial dimension with actual spatial data for it to be mappable. 
+
+Alright, let’s merge the mosquito data using the `NAME_3` column with the shapefile dataset:
 
 ```{r, eval=FALSE}
-# Using the merge() function 
-Spatial_data <- merge(london_lsoa_shapefile, Full_data, by.x = "LSOA_code", by.y = "LSOA_code", all.x = TRUE)
-
+# Merge the non-spatial table with ADMIN3 data frame
+CIV_Spatial_Data <- merge(CIV_ADMIN3, CIV_Agg_Insect_ADMIN3, by.x = "NAME_3", by.y = "NAME_3", all.x = TRUE)
 # View the datasets
-View(Spatial_data)
+View(CIV_Spatial_Data)
 ```
+
+:::{.callout-important}
+The arguments used in `merge.csv()`: 
+
+1. `CIV_ADMIN3` is the target data frame we want something to be merged on to. 
+2. `CIV_Agg_Insect_ADMIN3` is the selected data frame we are using to merge with the `CIV_ADMIN3`. 
+3. `by.x = "NAME_3"` option we are specifying the name of the join column from the target data frame i.e., `CIV_ADMIN3`.
+4. `by.y = "NAME_3"` option we are specifying the name of the join column from the selected data frame i.e., `CIV_Agg_Insect_ADMIN3`
+5. `all.x=TRUE` option we are telling RStudio to retain all rows that are originally from the target data after merging regardless of whether or not they are present in the selected data frame. So even if a row from the selected data does not find a unique link with any of the rows in the target data to match - it will still preserve the target data frame by not discarding unlinked rows. But it will discard the unmatched rows from the selected data frame.
+:::
+
+## Basic visualisation of spatial data in RStudio
 
 ### Mapping with ‘tmap’ functions in RStudio
 
@@ -488,242 +433,121 @@ The `tmap` is the best package for creating maps in RStudio – it’s easy to c
 
 #### Visualising the outline(s) of study area
 
-Suppose you want to visual just the outline of London’s LSOA only:
+Suppose you want to visual just the outline of Cote d’Ivoire's prefecture areas only:
 
 ```{r, eval=FALSE}
-# Visual outline of London’s LSOA postcodes only
-tm_shape(Spatial_data) + tm_polygons()
+# Visual outline of prefecture only
+tm_shape(CIV_Spatial_Data) + tm_polygons()
+```
 
-# Insert the “Spatial_data” object into the command line of 
-# tm_shape(). No customisation has been applied here.
+We use the function `tm_shape()` and insert the `CIV_Spatial_Data` spatial object into its function, since we are plotting **polygons** follow it up with the function `tm_polygons()` 
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('images/day1/image_outline_CIV.png', error = FALSE) 
+```
+
+:::{.callout-note}
+Note that the above example is applies no customisation to the map!
+:::
+
+You can customise the level of transparency for both the area and borders by adding some arguments in the `tm_polygon()` [i.e., `fill_alpha`, and `col_alpha` which only take values between 0 (full transparency) to 1 (100% solid)]. `fill_alpha` controls the transparency of the areas, and `col_alpha` controls the transparency of the borders. 
+
+For example:
+
+```{r, eval=FALSE}
+tm_shape(CIV_Spatial_Data) + tm_polygons(fill_alpha = 0.1, col_alpha = 0.4)
 ```
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
-knitr::include_graphics('images/general/week1/image6_outline.png', error = FALSE) 
-```
-
-You can customise the level of transparency for both the area and borders by adding some arguments in the `tm_polygon()` [i.e., `fill_alpha`, and `col_alpha` which only take values between 0 (full transparency) to 1 (100% solid)]. For example:
-
-```{r, eval=FALSE}
-# Controlling transparencies for borders and areas
-
-tm_shape(Spatial_data) + 
-	tm_polygons(fill_alpha = 0.1, col_alpha = 0.4)
-```
-
-```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
-knitr::include_graphics('images/general/week1/image7_transparency.png', error = FALSE) 
+knitr::include_graphics('images/day1/image_outline_trans_CIV.png', error = FALSE) 
 ```
 
 #### Adding another layer on top of study area 
 
-Suppose you want to add another layer to show the regions (i.e., Borough) of London for which the LSOA areas reside in, you can use another `tm_shape()` in the code, the coding would be as follows:
+Suppose you want to add another layer to show the regions (i.e., Districts) of Cote d'Ivoire for which the sub-prefecture areas reside in, you can use another `tm_shape()` in the code add that additional layer, the coding would be as follows:
 
 ```{r, eval=FALSE}
 # Adding another layer
 
-tm_shape(Spatial_data) + 
+tm_shape(CIV_Spatial_Data) + 
 	tm_polygons(fill_alpha = 0.1, col_alpha = 0.4) +
-tm_shape(london_borough_shapefile) +
-	tm_polygons(fill_alpha = 0, col_alpha = 1, col = "black")
+tm_shape(CIV_ADMIN1) +
+	tm_polygons(fill_alpha = 0, col_alpha = 1, col = "black", lwd = 2)
 
-# The background of the added layer (london_borough_shapefile) has been rendered 
-# to full transparency with the fill_alpha set to 0 and it borders are fully solid 
-# using col_alpha set to 1 and col (colour) set to “black” to appear pronounced.
+# The background of the added layer (CIV_ADMIN1) has been rendered to full transparency with the fill_alpha set to 0 and it borders are fully solid using col_alpha set to 1 and col (colour) set to “black” to appear pronounced. In addition, we have thickened the line by using setting that controls the line thickness `lwd = 2` 
 ```
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
-knitr::include_graphics('images/general/week1/image8_addedlayer.png', error = FALSE) 
+knitr::include_graphics('images/day1/image_outline_trans_addlayer_CIV.png', error = FALSE) 
 ```
 
 #### Full visualising of data in the maps
 
-Suppose you want to visual the spatial data in those postcodes, we can use the `tm_polygons()` function.  Let us visual the `IMD_Decile` column which has **DISCRETE** (or CATEGORICAL) values classed from 1 to 10 to signify areas that are deprived (with 1 being the poorest) and those that are wealthier (with 10 being the least deprived). 
+Suppose you want to visualise the spatial data in sub-prefectures, we can use the `tm_polygons()` function to specify the column of interest. For instance, let us visual the `MORTALITY_ADJ_AVR` column which has **CONTINUOUS** (or proportion) values ranging from 0 to 1 to signify areas that successfully reduced the treat of mosquito populations through insecticide application (with 1 equivalent to 100% mortality of mosquitoes after being exposed to the insecticide) and vice versa (with 0 meaning that all mosquitoes survived indicating resistance to this insecticide). 
 
 The coding would be as follows:
 
 ```{r, eval=FALSE}
-# Generate map IMD_Deciles
-
-tm_shape(Spatial_data) +
-    tm_polygons(
-		fill = "IMD_Decile", 
-		fill.scale = tm_scale_categorical(values = "brewer.rd_yl_gn"),
-        fill.legend = tm_legend(title = "Deprivation (Deciles)", frame = FALSE, item.space = -0.2, position = tm_pos_out()),
-        fill_alpha = 1, 
-        col_alpha = 0.5, 
-        col = "black", 
-        lwd = 0.1) +
-    tm_shape(london_borough_shapefile) + 
-    tm_polygons(fill_alpha = 0, col = "black") +
-    tm_compass(type = "arrow", position = c("right", "top")) + 
-    tm_scalebar(position = c("left", "bottom"))
+# full visualisation
+tm_shape(CIV_Spatial_Data) + 
+	tm_polygons(
+		fill = "MORTALITY_ADJ_AVR",
+		fill.scale = tm_scale_continuous(values = "brewer.rd_yl_bu"),
+		fill.legend = tm_legend(title = "Mortality of Mosquitoes after inserticide [%]", frame = FALSE, position = tm_pos_out()),
+		fill_alpha = 1, col_alpha = 0.5, col = "black", lwd = 0.5) +
+tm_shape(CIV_ADMIN1) + tm_text("NAME_1") +
+	tm_polygons(fill_alpha = 0, col_alpha = 1, col = "black", lwd = 2) +
+tm_compass(type = "arrow", position = c("right", "top")) +
+tm_scalebar(position = c("right", "bottom"))
 ```
 
-In the `tm_polygons()`, we insert the variable of interest we want to visual at the `fill = ` argument. The `fill.scale =` option allows us to select the appropriate fill scale colour scheme depending on the type of dataset we are using - here it is categorical, so we use `tm_scale_categorical()`. The `fill_legend()` allows us to apply the appropriate customisation to the legends. 
+In the `tm_polygons()`, we insert the variable of interest we want to visual at the `fill = ` argument. The `fill.scale =` option allows us to select the appropriate fill scale colour scheme depending on the type of dataset we are using - here it is continuous, so we use `tm_scale_continuous()`. The `fill_legend()` allows us to apply the appropriate customisation to the legends in the legend block. 
+
+You can also check all the available list of colour schemes by typing the code: `cols4all::c4a_palettes()`. 
 
 :::{.callout-note}
 **Geography 101** – when creating a map, it is always best to add the North compass and scale bar. This is done with the `tm_compass()` and `tm_scalebar()` functions. The `tm_layout()` allows you to make further customisations to the internal and external plot region of map such as turning of the plot frame or modifying the text size in output. You can experiment with them by checking the help menu – just type: `?tm_layout()` in the console.
 :::
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
-knitr::include_graphics('images/general/week1/Image9_finalmap.png', error = FALSE) 
+knitr::include_graphics('images/day1/image_mortality_mos_map.png', error = FALSE) 
 ```
 
-This concludes this computer lab session. Challenge yourself with the task placed in **section 1.6**
+### Generating interactive maps
 
-## References
+By running the code: `tmap_mode("view")`, will cause all map outputs to be generated in interactivity mode.
 
-### Recommended reading (see reading list)
+```{r eval=FALSE}
+tmap_mode("view")
+```
 
-1. **Book**: [Theory] Longley, P. _et al_ (2015) Geographic Information Science & Systems (4th Edition); **Chapters 2: The Nature of Geographic Data** [**Click link**](https://rl.talis.com/3/ucl/items/61CF5A5F-A6A3-9506-1F94-DF3CBD81CC3A.html) (Note: use of your UCL login via institutional organisation (**UK Federation**) is required to access the digital book)
-2. **Book**: [Theory] Longley, P. _et al_ (2015) Geographic Information Science & Systems (4th Edition); **Chapters 3: Representing Geography** [**Click link**](https://rl.talis.com/3/ucl/items/61CF5A5F-A6A3-9506-1F94-DF3CBD81CC3A.html) (Note: use of your UCL login via institutional organisation (**UK Federation**) is required to access the digital book)
-3. **Book**: [R Programming] Brunsdon, C. _et al_ (2018) An Introduction to R for Spatial Analysis and Mapping; **Chapter 3: Basics of Handling Spatial Data in R** [**Click link**](https://ucl.primo.exlibrisgroup.com/discovery/search?query=any,contains,An%20Introduction%20to%20R%20for%20Spatial%20Analysis%20and%20Mapping&tab=Everything&search_scope=MyInst_and_CI&sortby=date_d&vid=44UCL_INST:UCL_VU2&facet=frbrgroupid,include,9076326046905167101&offset=0) (Note: Books can be borrowed from UCL's Library)
-4. **Book**: [R Programming] Dorman, M. (2014) Learning R for Geospatial Analysis; **Chapter 1: The R Environment** [**Click link**](https://learning.oreilly.com/library/view/learning-r-for/9781783984367/ch01.html) (Note: Digital book)
-5. **Book**: [R Programming] Dorman, M. (2014) Learning R for Geospatial Analysis; **Chapter 3: Working with tables** [**Click link**](https://learning.oreilly.com/library/view/learning-r-for/9781783984367/ch03.html) (Note: Digital book)
-6. **Paper**: [R Programming] Tennekes, M. (2018). **tmap: Thematic Maps in R**. Journal of Statistical Software, 84(6), 1–39. https://doi.org/10.18637/jss.v084.i06 ([**Download**](https://www.jstatsoft.org/index.php/jss/article/view/v084i06/1210))
+This should switch the plot from being static to something that is now dynamic. If we run code to generate the full map again, it will be displayed as an interactive map:
 
-## Data Sources
-1. UK Fire statistics incident level dataset (see: "Low-level geography dataset")[Source: **UK Gov**] [**Click Here**](https://www.gov.uk/government/statistics/fire-statistics-incident-level-datasets) 
-2. English indices for Multiple Deprivation (IMD) for 2019 [Source: **UK Gov**] [**Click Here**](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019)
-3. UK Shape files for different geographic units [Source: **Office for National Statistics, Open Geography Portal**] [**Click Here**](https://geoportal.statistics.gov.uk)
-
-## Exercise
-
-**Exploring the burden of fire hazards and vulnerability in London**
-
-An incidence rate (IR) is typically a measure of frequency used to quantify the occurrence of an event.
-
-This basic quantitative measure is often applied in social sciences (e.g., criminology for crime rates, in education on pass rates for grades), epidemiology and disaster sciences as well. The study of fire hazards and safety is an intersection of these three fields.
-
-**Objectives**: Use the spatial data you have built throughout the exercise to visualise the distribution of incidence of fires that occurred in residential premises across postcodes in London in 2019. 
-
-**HINTS**: 
-
-- The incidence rate (**I**) formula for calculating fires hazards across LSOAs in London is the reported number of residential premises in an LSOA that experienced a fire event (**E**) divided by the total number of residential premises in an LOSA (**T**). This is shown below expressed per 1,000 residence (per capita). The reported number of residential premises is the column `Fires2019`. The total number of houses in an LSOA is the column `TotalHouses2019` The incidence rate formula is:
-
-</br>
-<center>
-$I  = (E/T) × 1000$
-</center>
-</br>
-
-- Experiment with the `tmap` functions and arguments to create a map showing the incidence rate of fire hazards across LSOAs in London. The output should look something as follows:
+```{r eval=FALSE}
+tm_shape(CIV_Spatial_Data) + 
+	tm_polygons(
+		fill = "MORTALITY_ADJ_AVR",
+		fill.scale = tm_scale_continuous(values = "brewer.rd_yl_bu"),
+		fill.legend = tm_legend(title = "Mortality of Mosquitoes after inserticide [%]", frame = FALSE, position = tm_pos_out()),
+		fill_alpha = 1, col_alpha = 0.5, col = "black", lwd = 0.5) +
+tm_shape(CIV_ADMIN1) + tm_text("NAME_1") +
+	tm_polygons(fill_alpha = 0, col_alpha = 1, col = "black", lwd = 2) +
+tm_compass(type = "arrow", position = c("right", "top")) +
+tm_scalebar(position = c("right", "bottom"))
+```
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
-knitr::include_graphics('images/general/week1/Image10_solutionmap.png', error = FALSE) 
+knitr::include_graphics('images/day1/image_interactive_map.png', error = FALSE) 
 ```
 
-- Use the `tm_shape()` functions to add the spatial data frame object with the incidence rates.
-- In the arguments for the `tm_polygons()` function, inside it, it should include the following codes: 1.) use the argument `fill=` to specify the name of the column to be mapped; 2.) use the argument `fill.scale = tm_scale_continuous()` to control how the scale in the legends should appear. It should  be continuous as the incidence rates are continuous values. Therefore, within the `tm_scale_continuous()` argument, use the options `values =` to control the colour gradient from blue (i.e., low intensity of fire hazards) to red (i.e., high burden) by typing the colour scheme: "-brewer.rd_bu"; 3.) use the argument `fill.legend = tm_legend()` to control the appearence of the legend block. Inside the `tm_legend()` specific `title =` as "Fires per 1,000", and remove the plot frame around the legend block by stating `frame = FALSE`; 4.) apply the further cosmetics changes using `"fill_alpha = 1"` (transparency of areas), `col_alpha = 0.5` (transparency of lines), `col = "grey"` (color of the line) and `lwd = 0.1` (line thickness).
-- Include the following customizations: 1.) a scale bar and a north arrow in the visualisation using the `tm_scale_bar()` and `tm_compass()`; and 2.) lastly, use the overlay of the London Borough shapefile add it on top of the London LSOA shapefile by using again, the `tm_shape()` function, and render it fully transparent. Try using the `tm_text()` function to include the names of the Boroughs in the visualisation - this column is called `ctyua16nm` in the Borough's shapefile.
+You can switch it off by running the following code: `tmap_mode("plot")` to revert it back to static mode.
 
-**Question:** How would you provide a descriptive interpretation of the spatial distribution/incidence of residential fires across LSOAs in London? 
-
-:::{.callout-note}
-Have a go at these questions before revealing the solution codes and output below
-:::
-
-<details><summary>**Click here to see solution code:**</summary>
-
-```{r set_up_path_GEOG0114_wk1, include = FALSE}
-knitr::opts_knit$set(root.dir = "/Users/anwarmusah/Documents/Websites/GEOG0114/all_datasets/Week 1 - Dataset")
-knitr::opts_chunk$set(cache = FALSE)
-```
-
-Load the required packages:
-
-```{r loading_packages_wk1, results='hide', message=FALSE, warning=FALSE}
-library("tmap")
-library("sf")
-```
-
-Load in the required dataset i.e., `London_LSOA_FireHazards_2019.csv` using the `read.csv()` function:
-
-```{r setting_workdir_wk1}
-# please be sure set the work directory according to your own PC
-# setwd("/Users/anwarmusah/Documents/Websites/GEOG0114/all_datasets/Week 1 - Dataset")
-
-Fire_data <- read.csv(file="London_LSOA_FireHazards_2019.csv", header = TRUE, sep = ",")
-```
-
-Load in the required shapefile dataset i.e., `London_LSOA_areas.shp` and `London_Boroughs_Shapefile.shp` using the `read_sf()` function:
-
-```{r loading_shp_wk1}
-# Add shapefiles for LSOA and Boroughs
-london_lsoa_shapefile <- read_sf("London_LSOA_areas.shp")
-london_borough_shapefile <- read_sf("London_Boroughs_Shapefile.shp")
-```
-
-Merge the fire records to LSOA shapefile using the `merge()` on common key column (e.g., `LSOA_code`):
-
-```{r, merging_data_wk1}
-Spatial_data <- merge(london_lsoa_shapefile, Fire_data, by.x = 'LSOA_code', by.y = 'LSOA_code', all.x = TRUE)
-```
-
-Calculate the incidence of fires in London's LSOA:
-
-```{r, incidence_rate}
-# Calculate the incidence rate. 
-# This requires creating a new variable in the `Spatial_data` data frame.
-# Let call the new variable 'IncidenceFires'. 
-# We are creating the 'IncidenceFires' column based on 'Fires2019' and 'TotalHouses2019'
-# Its a rate per capita so we will divide the two and multiple it by 1000
-
-Spatial_data$IncidenceFires <- (Spatial_data$Fires2019/Spatial_data$TotalHouses2019)*1000
-```
-
-Let's create the map that shows the burden of fires. Here, we will use a continuous scale for the colour gradient in the legend block: 
-
-```{r, map1}
-# Generate a incidence map 'with continuous scale' according to the criteria specified in the hints
-tm_shape(Spatial_data) + 
-	tm_polygons("IncidenceFires",
-		fill.scale = tm_scale_continuous(values = "-brewer.rd_bu", midpoint = 1.5),
-		fill.legend = tm_legend(title = "Fires per 1,000", frame = FALSE),
-		fill_alpha = 1,
-		col_alpha = 0.5,
-		col = "white",
-		lwd = 0.1) +
-	tm_shape(london_borough_shapefile) + 
-	tm_polygons(fill_alpha = 0, col = "black") +
-	tm_text("ctyua16nm", size = "AREA", fontface = "bold") +
-	tm_compass(type = "arrow", position = c("right", "top")) + 
-	tm_scalebar(position = c("left", "bottom"))
-```
-
-:::{.callout-note}
-**Interpretation:** From this static map, it is difficult to discern the spatial patterns in incidence of fire hazards in residential dwellings in LSOAs in London. For instance, Boroughs such as **Hackney** appears to have a **dispersed** pattern with some LSOAs reporting high incidence rates. The borough of **Bexley** has high incidence rates concentrated in the North-East.
-:::
-
-You can make this an interactive map by using the `tmap_mode("view")` code. Let us print this output in an interactive map, so we can zoom into the details and have a clearer picture:
-
-```{r, eval=FALSE}
-# to map interactive using tmap_mode("view") code, and re-run the map code again
-
-# active interactive mode
-tmap_mode("view")
-# re-run the map code again to show it in an interactive mode
-tm_shape(Spatial_data) + 
-	tm_polygons("IncidenceFires",
-		fill.scale = tm_scale_continuous(values = "-brewer.rd_bu", midpoint = 1.5),
-		fill.legend = tm_legend(title = "Fires per 1,000", frame = FALSE),
-		fill_alpha = 1,
-		col_alpha = 0.5,
-		col = "white",
-		lwd = 0.1) +
-	tm_shape(london_borough_shapefile) + 
-	tm_polygons(fill_alpha = 0, col = "black") +
-	tm_text("ctyua16nm", size = "AREA", fontface = "bold") +
-	tm_compass(type = "arrow", position = c("right", "top")) + 
-	tm_scalebar(position = c("left", "bottom"))
-
-# switch off the interactive mode
+```{r eval=FALSE}
 tmap_mode("plot")
 ```
 
-:::{.callout-note}
-By running the code: `tmap_mode("view")`, will cause all map outputs to be generated in interactivity mode. You can switch it off by running the following code: `tmap_mode("plot")`
-:::
+This concludes Day 1's session. On Day 2, we will use same the dataset to see if there is any patterns of clustering on where mosquitoes thrive despite being exposed to insecticides. 
 
-</details>
+## Data Sources
+1. **Malaria Threat Map** (see: "Vector Insecticide Resistance")[Source: **World Health Organisation (WHO)**] [**Click Here**](https://apps.who.int/malaria/maps/threats/#/) 
+2. **Shapefiles for Cote d'Ivoire** [Source: **Database of Global Adminstrative Areas (GADM)**] [**Click Here**](https://gadm.org/download_country.html)

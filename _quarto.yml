@@ -34,6 +34,7 @@ website:
     style: floating
     collapse-level: 2
     logo: images/general/BISemWeb2025_logo.png
+    logo-href: https://sites.google.com/view/bisemweb25/home
     tools:
       - icon: github
         href: https://github.com/UCLPG-MSC-SGDS/BISemWeb2025
@@ -48,6 +49,7 @@ website:
           - 02-reading_list.qmd
       - section: "Practical Sessions"
         contents:
+          - 03-introduction_to_tmap.qmd
 
 
 
