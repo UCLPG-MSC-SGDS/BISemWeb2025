@@ -18,7 +18,7 @@ To enable the efficient, repeatable and reproducible functionality of our work, 
 
 ### Datasets & setting up the work directory 
 
-Before you begin, if you have not done so already, please make sure to download all data by [**clicking here**](). Create a sub folder called "**BISemWeb2025**" within your "**BISemWeb202**" folder stored in the desktop of your personal computer. Make sure to extract all data from the downloaded zip folder and store it into "**Day 2**" folder. Use your newly open R script and set the work directory to **Day 2's** folder.
+Before you begin, if you have not done so already, please make sure to download all data by [**clicking here**](https://tinyurl.com/5n7f7e3v). Create a sub folder called "**BISemWeb2025**" within your "**BISemWeb202**" folder stored in the desktop of your personal computer. Make sure to extract all data from the downloaded zip folder and store it into "**Day 2**" folder. Use your newly open R script and set the work directory to **Day 2's** folder.
 
 For Windows, the code for setting the work directory will be:
 
@@ -95,7 +95,7 @@ tm_shape(CIV_Agg_NTD_ADMIN4) +
 ```
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
-knitr::include_graphics('images/general/day2/map1.png', error = FALSE) 
+knitr::include_graphics('images/day2/map1.png', error = FALSE) 
 ```
 
 :::{.callout-note}
