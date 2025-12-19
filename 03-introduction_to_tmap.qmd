@@ -549,5 +549,11 @@ tmap_mode("plot")
 This concludes Day 1's session. On Day 2, we will use same the dataset to see if there is any patterns of clustering on where mosquitoes thrive despite being exposed to insecticides. 
 
 ## Data Sources
-1. **Malaria Threat Map** (see: "Vector Insecticide Resistance")[Source: **World Health Organisation (WHO)**] [**Click Here**](https://apps.who.int/malaria/maps/threats/#/) 
-2. **Shapefiles for Cote d'Ivoire** [Source: **Database of Global Adminstrative Areas (GADM)**] [**Click Here**](https://gadm.org/download_country.html)
+1. Malaria Threat Map (see: "Vector Insecticide Resistance")[Source: World Health Organisation (WHO)] [**Click Here**](https://apps.who.int/malaria/maps/threats/#/) 
+2. Shapefiles for Cote d'Ivoire [Source: Database of Global Adminstrative Areas (GADM)] [**Click Here**](https://gadm.org/download_country.html)
+
+:::{.callout-warning}
+**IMPORTANT NOTE**: Users should be aware that the original data used in this practical were obtained from WHO’s **Malaria Threat Map (Vector Insecticide Resistance)**. The dataset consists of survey point locations of mosquito occupancy (total) for Anopheles species exposed to insecticides, including counts of mosquitoes that survived and those that died.
+
+For the purposes of this practical and to visualise area-level information, these point-level measures were aggregated to the sub-prefecture level. To complete the dataset for sub-prefectures with missing data, the aggregated data were resampled using Bayesian methods, incorporating information from neighbouring areas to fill in the gaps.
+:::

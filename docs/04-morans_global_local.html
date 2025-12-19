@@ -475,7 +475,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="case-study-neglected-tropical-disease-ntd-distribution-in-cote-divoire" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="case-study-neglected-tropical-disease-ntd-distribution-in-cote-divoire"><span class="header-section-number">2</span> Case study: Neglected Tropical Disease (NTD) Distribution in Cote d’Ivoire</h2>
 <p>This session looks at spatial dependence and autocorrelation in detail, focusing on the different methods of assessment. As part of this, we look at how to define spatial neighbours, and how this approach is used to generate spatial weights for use within these spatial autocorrelation methods as well as their potential to generate spatially-explicit variables.</p>
-<p>We put these learnings into practice through an analysis of spatial dependence of areal neglected tropical disease data from World Health Organization’s <a href="https://espen.afro.who.int"><strong>Expanded Special Project for Elimination of Neglected Tropical Diseases (ESPEN)</strong></a>, experimenting as an application for detecting clusters of diseases in Cote d’Ivoire. For this practical, we will look at the distribution of NTDs at community-level (level 4) in Cote d’Ivoire.</p>
+<p>We put these learnings into practice through an analysis of spatial dependence of areal neglected tropical disease data from World Health Organization’s <a href="https://espen.afro.who.int"><strong>Expanded Special Project for Elimination of Neglected Tropical Diseases (ESPEN)</strong></a>, and the <a href="https://github.com/malaria-atlas-project/malariaAtlas"><strong>[Malaria Atlas Project]</strong></a>, experimenting as an application for detecting clusters of diseases in Cote d’Ivoire. For this practical, we will look at the distribution of NTDs at community-level (level 4) in Cote d’Ivoire.</p>
 <section id="loading-our-data-sets" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="loading-our-data-sets"><span class="header-section-number">2.1</span> Loading our data sets</h3>
 <p>There are three files (2 shapefiles) that we are going to import into RStudio:</p>
@@ -750,9 +750,25 @@ Important
 <section id="data-sources" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">3</span> Data Sources</h2>
 <ol type="1">
-<li><strong>Expanded Special Project for Elimination of Neglected Tropical Diseases (ESPEN)</strong>[Source: <strong>World Health Organisation (WHO)</strong>] <a href="https://espen.afro.who.int"><strong>Click Here</strong></a></li>
-<li><strong>Shapefiles for Cote d’Ivoire</strong> [Source: <strong>Database of Global Adminstrative Areas (GADM)</strong>] <a href="https://gadm.org/download_country.html"><strong>Click Here</strong></a></li>
+<li>Expanded Special Project for Elimination of Neglected Tropical Diseases (ESPEN) [Source: World Health Organisation (WHO)] <a href="https://espen.afro.who.int"><strong>Click Here</strong></a></li>
+<li>Malaria Atlas Project [Source: R interface to open-access malaria data, hosted by the Malaria Atlas Project] <a href="https://github.com/malaria-atlas-project/malariaAtlas"><strong>Click Here</strong></a>;</li>
+<li>malariaAtlas: an R interface to global malariometric data hosted by the Malaria Atlas Project [Source: see publication] <a href="https://link.springer.com/article/10.1186/s12936-018-2500-5"><strong>Click Here</strong></a></li>
+<li>Shapefiles for Cote d’Ivoire [Source: Database of Global Adminstrative Areas (GADM)] <a href="https://gadm.org/download_country.html"><strong>Click Here</strong></a></li>
 </ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>IMPORTANT NOTE</strong>: Users should be aware that the original data used in this practical were obtained from WHO’s <strong>Expanded Special Project for Elimination of Neglected Tropical Diseases (ESPEN)</strong> and the <strong>Malaria Atlas Project</strong>. Together, these datasets consist of survey point locations of incident cases of neglected tropical diseases (NTDs), primarily vector-borne illnesses such as malaria, lymphatic filariasis, and onchocerciasis, as well as parasitic infections such as soil-transmitted helminths. These point locations contain data on the total number of individuals surveyed and the number testing positive for each disease, covering the period from 2014 to 2024 across the data sources.</p>
+<p>For the purposes of this practical—namely, statistical analysis for area-level cluster detection—these point-level measures were aggregated to the community level, generating summary values for NTD counts (i.e., numbers examined and positive). In addition, to complete the dataset for communities with missing data, the aggregated data were resampled using Bayesian methods, incorporating information from neighbouring areas to fill in the gaps.</p>
+</div>
+</div>
 
 
 </section>
