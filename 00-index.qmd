@@ -20,7 +20,7 @@ All lectures and computer practicals will be delivered hybrid. The table below c
 |:----------------|:-----------------------------|:-------------------------------------------------------------------------|
 | 17/12/2025      | Lecture                      | Intro. Spatial Data Analysis [**[Slides]**](https://tinyurl.com/yuwz3tj5)|
 | 18/12/2025      | Practical I                  | Basic mapping using `tmap` [**[Dataset]**](https://tinyurl.com/4t4dn43k) |
-| 19/12/2025      | Practical II                 | Moran's I & LISA mapping for Cluster Detection                           |
+| 19/12/2025      | Practical II                 | Spatial Autocorrelation [**[Dataset]**]()                                |
 
 ::: note
 **IMPORTANT NOTE**: If you can, please bring your own laptops with you to participate in these remote sessions. These will be recorded accordingly and the associated video will be made available.

@@ -50,6 +50,7 @@ website:
       - section: "Practical Sessions"
         contents:
           - 03-introduction_to_tmap.qmd
+          - 04-morans_global_local.qmd
 
 
 
